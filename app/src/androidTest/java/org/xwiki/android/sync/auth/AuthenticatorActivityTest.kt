@@ -55,7 +55,7 @@ class AuthenticatorActivityTest : LifecycleObserver {
         activityScenario.close()
     }
 
-    /*@Test
+    @Test
     fun testSignUp() {
         activityScenario.onActivity {
             it.showViewFlipper(1)
@@ -65,7 +65,7 @@ class AuthenticatorActivityTest : LifecycleObserver {
         activityScenario.close()
     }
 
-    @Test
+    /*@Test
     fun testSignIn() {
         activityScenario.onActivity {
             it.showViewFlipper(0)
