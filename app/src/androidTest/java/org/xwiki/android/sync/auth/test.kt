@@ -52,6 +52,7 @@ class test : LifecycleObserver {
 //        activityScenario.onActivity {
 //            it.showViewFlipper(1)
 //        }
+        activityScenario.moveToState(Lifecycle.State.RESUMED)
         onView(withId(R.id.btViewSignInFlipper)).perform(click())
         onView(withId(R.id.accountName))
             .perform(typeText(TEST_USERNAME))      // Test user, for log in
