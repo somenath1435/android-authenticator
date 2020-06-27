@@ -36,6 +36,7 @@ class test{
         i.putExtra(KEY_AUTH_TOKEN_TYPE, authTokenType)
         i.putExtra(IS_SETTING_SYNC_TYPE, false)
         i.putExtra("Test", true)
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         rule.launchActivity(i)
         onView(withId(R.id.btViewSignInFlipper)).perform(click())
         onView(withId(R.id.accountName))
