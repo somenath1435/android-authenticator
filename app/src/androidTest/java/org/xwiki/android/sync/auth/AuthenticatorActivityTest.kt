@@ -69,13 +69,13 @@ class AuthenticatorActivityTest : LifecycleObserver {
     fun testSignIn() {
         activityScenario.onActivity {
             it.showViewFlipper(0)
-            onView(withId(R.id.btViewSignInFlipper)).perform(click())
-            onView(withId(R.id.accountName))
-                .perform(typeText(TEST_USERNAME))      // Test user, for log in
-            onView(withId(R.id.accountPassword))
-                .perform(typeText(TEST_PASSWORD), closeSoftKeyboard())
-            onView(withId(R.id.signInButton)).perform(click())
         }
+        onView(withId(R.id.btViewSignInFlipper)).perform(click())
+        onView(withId(R.id.accountName))
+            .perform(typeText(TEST_USERNAME))      // Test user, for log in
+        onView(withId(R.id.accountPassword))
+            .perform(typeText(TEST_PASSWORD), closeSoftKeyboard())
+        onView(withId(R.id.signInButton)).perform(click())
         activityScenario.moveToState(Lifecycle.State.STARTED)
         activityScenario.close()
     }
