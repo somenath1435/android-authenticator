@@ -76,6 +76,8 @@ class AuthenticatorActivityTest : LifecycleObserver {
                 .perform(typeText(TEST_PASSWORD), closeSoftKeyboard())
             onView(withId(R.id.signInButton)).perform(click())
         }
+        activityScenario.moveToState(Lifecycle.State.STARTED)
+        activityScenario.close()
     }
 
     @Test
