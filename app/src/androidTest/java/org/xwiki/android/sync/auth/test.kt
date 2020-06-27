@@ -49,10 +49,10 @@ class test : LifecycleObserver {
 
     @Test
     fun testSignIn() {
-        activityScenario.onActivity {
-            it.showViewFlipper(1)
-        }
-//        onView(withId(R.id.btViewSignInFlipper)).perform(click())
+//        activityScenario.onActivity {
+//            it.showViewFlipper(1)
+//        }
+        onView(withId(R.id.btViewSignInFlipper)).perform(click())
         onView(withId(R.id.accountName))
             .perform(typeText(TEST_USERNAME))      // Test user, for log in
         onView(withId(R.id.accountPassword))
