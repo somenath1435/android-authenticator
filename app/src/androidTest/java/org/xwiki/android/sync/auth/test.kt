@@ -32,7 +32,7 @@ private const val TEST_PASSWORD = "a7890"
 
 @RunWith(AndroidJUnit4::class)
 @MediumTest
-class AuthenticatorActivityTest : LifecycleObserver {
+class test : LifecycleObserver {
 
     private lateinit var activityScenario: ActivityScenario<AuthenticatorActivity>
 
@@ -48,24 +48,6 @@ class AuthenticatorActivityTest : LifecycleObserver {
     }
 
     @Test
-    fun testServerUrl () {
-        activityScenario.onActivity {
-            it.showViewFlipper(0)
-        }
-        activityScenario.close()
-    }
-
-    @Test
-    fun testSignUp() {
-        activityScenario.onActivity {
-            it.showViewFlipper(1)
-            it.signUp(it.binding.viewFlipper[1])
-        }
-        activityScenario.moveToState(Lifecycle.State.STARTED)
-        activityScenario.close()
-    }
-
-    /*@Test
     fun testSignIn() {
         activityScenario.onActivity {
             it.showViewFlipper(0)
@@ -76,28 +58,6 @@ class AuthenticatorActivityTest : LifecycleObserver {
         onView(withId(R.id.accountPassword))
             .perform(typeText(TEST_PASSWORD), closeSoftKeyboard())
         onView(withId(R.id.signInButton)).perform(click())
-    }*/
-
-    @Test
-    fun checkOIDCSupport() {
-        activityScenario.moveToState(Lifecycle.State.STARTED)
-
-        val url = URL ("$XWIKI_DEFAULT_SERVER_ADDRESS/oidc/")
-
-        val request = Request.Builder().url(url).build()
-
-        val client = OkHttpClient()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onResponse(call: Call, response: Response) {
-                println(response)
-                TestCase.assertTrue(response.isSuccessful)
-            }
-
-            override fun onFailure(call: Call, e: IOException) {
-                Log.e("Test", e.localizedMessage)
-            }
-        })
     }
 
     @After
