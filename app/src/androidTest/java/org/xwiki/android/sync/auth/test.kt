@@ -36,7 +36,7 @@ class test : LifecycleObserver {
 
     private lateinit var activityScenario: ActivityScenario<AuthenticatorActivity>
 
-    @Before
+    /*@Before
     fun setUp() {
         val i = Intent(appContext, AuthenticatorActivity::class.java)
         val authTokenType = AUTHTOKEN_TYPE_FULL_ACCESS + "android.uid.system"
@@ -45,24 +45,31 @@ class test : LifecycleObserver {
         i.putExtra(IS_SETTING_SYNC_TYPE, false)
         i.putExtra("Test", true)
         activityScenario = ActivityScenario.launch(i)
-    }
+    }*/
 
     @Test
     fun testSignIn() {
+        val i = Intent(appContext, AuthenticatorActivity::class.java)
+        val authTokenType = AUTHTOKEN_TYPE_FULL_ACCESS + "android.uid.system"
+        i.putExtra(AccountManager.KEY_ACCOUNT_TYPE, ACCOUNT_TYPE)
+        i.putExtra(KEY_AUTH_TOKEN_TYPE, authTokenType)
+        i.putExtra(IS_SETTING_SYNC_TYPE, false)
+        i.putExtra("Test", true)
+        activityScenario = ActivityScenario.launch(i)
 //        activityScenario.onActivity {
 //            it.showViewFlipper(1)
 //        }
-        activityScenario.moveToState(Lifecycle.State.RESUMED)
         onView(withId(R.id.btViewSignInFlipper)).perform(click())
         onView(withId(R.id.accountName))
             .perform(typeText(TEST_USERNAME))      // Test user, for log in
         onView(withId(R.id.accountPassword))
             .perform(typeText(TEST_PASSWORD), closeSoftKeyboard())
         onView(withId(R.id.signInButton)).perform(click())
+
     }
 
-    @After
+    /*@After
     fun closeActivity() {
         activityScenario.close()
-    }
+    }*/
 }
