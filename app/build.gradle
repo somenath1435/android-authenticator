@@ -82,4 +82,6 @@ dependencies {
 
     // Required by other dependencies
     implementation "com.google.code.findbugs:jsr305:$jsr305_version"
+
+    androidTestImplementation 'androidx.test:rules:1.2.0'
 }
