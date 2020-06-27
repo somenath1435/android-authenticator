@@ -69,9 +69,8 @@ class AuthenticatorActivityTest : LifecycleObserver {
     fun testSignIn() {
         activityScenario.onActivity {
             it.showViewFlipper(0)
-            activityScenario.moveToState(Lifecycle.State.RESUMED)
         }
-        activityScenario.moveToState(Lifecycle.State.RESUMED)
+        activityScenario.moveToState(Lifecycle.State.STARTED)
         onView(withId(R.id.btViewSignInFlipper)).perform(click())
         onView(withId(R.id.accountName))
             .perform(typeText(TEST_USERNAME))      // Test user, for log in
